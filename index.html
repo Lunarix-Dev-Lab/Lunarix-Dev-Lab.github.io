@@ -65,6 +65,8 @@
        HERO
   ============================== -->
   <section id="hero">
+    <!-- Animated grid canvas — JS spawns sparkle cells -->
+    <div id="hero-grid-canvas" aria-hidden="true"></div>
     <!-- Animated background orbs — animated in CSS, no JS -->
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
@@ -386,13 +388,23 @@
       <div class="team-grid">
         <!-- Joaquin Ortega -->
         <div class="team-card fade-in delay-1">
+          <div class="avatar-wrap">
           <div class="avatar" style="background:#18181B;">JO</div>
+          </div>
           <div class="member-name">Joaquin Ortega</div>
           <div class="member-role">CEO &amp; Co-founder</div>
           <div class="role-tags">
             <span class="tag">Full Stack Dev</span>
             <span class="tag">Software Architect</span>
             <span class="tag">Project Manager</span>
+          </div>
+          <div class="card-spacer"></div>
+          <div class="bio-toggle">
+            <span class="lang-es">Ver perfil</span>
+            <span class="lang-en">View profile</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
           <p class="member-bio">
             <span class="lang-es">Más de un año de experiencia como desarrollador de sistemas en entornos empresariales, con especialización en entender y traducir las necesidades del negocio en soluciones tecnológicas concretas.</span>
@@ -402,7 +414,9 @@
 
         <!-- Agustín Astie -->
         <div class="team-card fade-in delay-2">
+          <div class="avatar-wrap">
           <div class="avatar" style="background:#27272A;">AA</div>
+          </div>
           <div class="member-name">Agustín Astie</div>
           <div class="member-role">CTO &amp; Co-founder</div>
           <div class="role-tags">
@@ -410,21 +424,39 @@
             <span class="tag">AI Engineer</span>
             <span class="tag">Tech Lead</span>
           </div>
+          <div class="card-spacer"></div>
+          <div class="bio-toggle">
+            <span class="lang-es">Ver perfil</span>
+            <span class="lang-en">View profile</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
           <p class="member-bio">
             <span class="lang-es">Desarrollador full stack certificado con especialización en inteligencia artificial y redes neuronales. Lidera la arquitectura técnica y la integración de soluciones de IA en los proyectos del equipo.</span>
             <span class="lang-en">Certified full stack developer with specialization in artificial intelligence and neural networks. Leads technical architecture and AI solution integration across the team's projects.</span>
           </p>
         </div>
 
-        <!-- Matías Martínez -->
+        <!-- Matias Martinez -->
         <div class="team-card fade-in delay-3">
+          <div class="avatar-wrap">
           <div class="avatar" style="background:#3F3F46;">MM</div>
-          <div class="member-name">Matías Martínez</div>
+          </div>
+          <div class="member-name">Matias Martinez</div>
           <div class="member-role"><span class="lang-es">Head of Product</span><span class="lang-en">Head of Product</span></div>
           <div class="role-tags">
             <span class="tag">UI/UX Designer</span>
             <span class="tag">Product Designer</span>
             <span class="tag">Frontend Dev</span>
+          </div>
+          <div class="card-spacer"></div>
+          <div class="bio-toggle">
+            <span class="lang-es">Ver perfil</span>
+            <span class="lang-en">View profile</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
           <p class="member-bio">
             <span class="lang-es">Especialista en diseño de interfaces y experiencia de usuario. Crea productos digitales intuitivos y visualmente sólidos, asegurando que cada pantalla comunique claramente y guíe al usuario de forma natural.</span>
@@ -432,15 +464,25 @@
           </p>
         </div>
 
-        <!-- Luciano López -->
+        <!-- Luciano Lopez -->
         <div class="team-card fade-in delay-4">
+          <div class="avatar-wrap">
           <div class="avatar" style="background:#52525B;">LL</div>
-          <div class="member-name">Luciano López</div>
+          </div>
+          <div class="member-name">Luciano Lopez</div>
           <div class="member-role"><span class="lang-es">Head of Product</span><span class="lang-en">Head of Product</span></div>
           <div class="role-tags">
             <span class="tag">UI/UX Designer</span>
             <span class="tag">Mobile Developer</span>
             <span class="tag">Frontend Dev</span>
+          </div>
+          <div class="card-spacer"></div>
+          <div class="bio-toggle">
+            <span class="lang-es">Ver perfil</span>
+            <span class="lang-en">View profile</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
           <p class="member-bio">
             <span class="lang-es">Diseñador de interfaces con foco en aplicaciones móviles. Combina criterio visual con sensibilidad técnica para construir experiencias fluidas que funcionan igual de bien en pantallas pequeñas que en web.</span>
@@ -450,12 +492,22 @@
 
         <!-- Francisco Aguilera -->
         <div class="team-card fade-in delay-1">
+          <div class="avatar-wrap">
           <div class="avatar" style="background:#71717A;">FA</div>
+          </div>
           <div class="member-name">Francisco Aguilera</div>
           <div class="member-role">Frontend Developer</div>
           <div class="role-tags">
             <span class="tag">QA Engineer</span>
             <span class="tag">Tech Support</span>
+          </div>
+          <div class="card-spacer"></div>
+          <div class="bio-toggle">
+            <span class="lang-es">Ver perfil</span>
+            <span class="lang-en">View profile</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
           <p class="member-bio">
             <span class="lang-es">Desarrollador frontend con atención al detalle visual y la calidad. Se encarga de que cada interfaz se vea y funcione exactamente como fue diseñada, en cualquier dispositivo y navegador.</span>
@@ -465,12 +517,22 @@
 
         <!-- Santiago Carrera -->
         <div class="team-card fade-in delay-2">
+          <div class="avatar-wrap">
           <div class="avatar" style="background:#3F3F46;">SC</div>
+          </div>
           <div class="member-name">Santiago Carrera</div>
           <div class="member-role">Frontend &amp; Mobile Developer</div>
           <div class="role-tags">
             <span class="tag">Frontend Dev</span>
             <span class="tag">Mobile Dev</span>
+          </div>
+          <div class="card-spacer"></div>
+          <div class="bio-toggle">
+            <span class="lang-es">Ver perfil</span>
+            <span class="lang-en">View profile</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
           <p class="member-bio">
             <span class="lang-es">Desarrollador especializado en interfaces responsivas y apps móviles nativas. Apasionado por construir productos que se sientan rápidos, modernos y agradables de usar en cualquier plataforma.</span>
@@ -480,12 +542,22 @@
 
         <!-- Juan Pablo Gerino -->
         <div class="team-card fade-in delay-3">
+          <div class="avatar-wrap">
           <div class="avatar" style="background:#27272A;">JPG</div>
+          </div>
           <div class="member-name">Juan Pablo Gerino</div>
           <div class="member-role">Backend Developer</div>
           <div class="role-tags">
             <span class="tag">Software Architect</span>
             <span class="tag">QA Engineer</span>
+          </div>
+          <div class="card-spacer"></div>
+          <div class="bio-toggle">
+            <span class="lang-es">Ver perfil</span>
+            <span class="lang-en">View profile</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
           <p class="member-bio">
             <span class="lang-es">Desarrollador backend con experiencia en sistemas internos de pagos, portales de usuarios y arquitecturas de software robustas orientadas a la escalabilidad y la seguridad.</span>
@@ -543,7 +615,7 @@
 
         <!-- Social links — update hrefs with your actual handles -->
         <div class="social-links">
-          <a href="https://www.instagram.com/lunarixlab" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+          <a href="https://www.instagram.com/lunarixlabb/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5"/>
               <circle cx="12" cy="12" r="5"/>
