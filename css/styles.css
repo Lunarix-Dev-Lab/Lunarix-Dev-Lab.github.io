@@ -187,7 +187,7 @@ nav.scrolled {
   display: none;
   position: fixed;
   inset: 0;
-  background: linear-gradient(165deg, #110F22 0%, var(--black) 45%, #160F2C 100%);
+  background: var(--white);
   z-index: 101;
   flex-direction: column;
   align-items: center;
@@ -262,8 +262,8 @@ nav.scrolled {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(167,158,221,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(167,158,221,0.05) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
   background-size: 64px 64px;
   pointer-events: none;
   z-index: 0;
@@ -299,7 +299,7 @@ nav.scrolled {
   50% {
     opacity: 1;
     transform: scale(1.06);
-    background: rgba(155,140,225,0.09);
+    background: rgba(255,255,255,0.07);
   }
   65% {
     opacity: 0;
@@ -477,13 +477,9 @@ nav.scrolled {
 /* ============================
    SERVICES — TASK 2
 ============================ */
-/* Lifted dark canvas — constellation dot-pattern + twin violet/blue glow mesh */
+/* Subtle gradient from white to near-white */
 #services {
-  background:
-    radial-gradient(circle, rgba(180,172,230,0.10) 1px, transparent 1.4px) 0 0/34px 34px,
-    radial-gradient(ellipse 920px 600px at 86% -10%, rgba(111,98,196,0.20), transparent 60%),
-    radial-gradient(ellipse 760px 520px at 4% 106%, rgba(83,128,199,0.15), transparent 58%),
-    linear-gradient(165deg, #1D1838 0%, #221C42 50%, #1A1532 100%);
+  background: linear-gradient(180deg, var(--white) 0%, #F8F8F9 100%);
 }
 
 .services-grid {
@@ -500,21 +496,21 @@ nav.scrolled {
   position: relative;
   overflow: hidden;
   /* Elevated, diffuse shadow for depth */
-  box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03), 0 0 0 0px rgba(0,0,0,0);
   transition: border-color 0.3s, transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 .service-card::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.045) 0%, transparent 60%);
+  background: linear-gradient(135deg, var(--gray-50) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s;
 }
 .service-card:hover {
-  border-color: var(--surface-border-hover);
+  border-color: var(--gray-300);
   transform: translateY(-4px);
-  box-shadow: 0 20px 52px rgba(0,0,0,0.32), 0 0 0 1px rgba(111,98,196,0.10), 0 8px 28px rgba(111,98,196,0.14);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.09), 0 4px 12px rgba(0,0,0,0.04);
 }
 .service-card:hover::after { opacity: 1; }
 
@@ -529,7 +525,7 @@ nav.scrolled {
   position: relative;
   z-index: 1;
   flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(111,98,196,0.32);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
 }
 .service-icon svg {
   width: 20px; height: 20px;
@@ -554,8 +550,6 @@ nav.scrolled {
 }
 
 /* ============================
-   SAAS PRODUCTS SHOWCASE
-============================ */
 /* Lifted dark canvas — constellation pattern + asymmetric corner glow, distinct rhythm */
 #products {
   background:
@@ -563,6 +557,10 @@ nav.scrolled {
     radial-gradient(ellipse 860px 540px at 14% -12%, rgba(111,98,196,0.17), transparent 60%),
     radial-gradient(ellipse 760px 560px at 102% 108%, rgba(83,128,199,0.14), transparent 58%),
     linear-gradient(160deg, #1E1A38 0%, #221C44 50%, #1A1532 100%);
+   WHY LUNARIX — TASK 2
+/* Inverted gradient: subtle depth from light to white */
+#about {
+  background: linear-gradient(180deg, #F8F8F9 0%, var(--white) 60%, var(--gray-50) 100%);
 }
 
 .products-header {
@@ -641,14 +639,7 @@ nav.scrolled {
   to { background-position: 0 0, -320% 0; }
 }
 
-.cta-pulse {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--violet-soft);
-  position: relative;
-  flex-shrink: 0;
-}
-.cta-pulse::before {
+.pillars::before {
   content: '';
   position: absolute;
   inset: -5px;
@@ -676,19 +667,7 @@ nav.scrolled {
   overflow: hidden;
   transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
-
-/* Featured: LunarixApple */
-.product-card.featured {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-direction: row;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.22);
-}
-.product-card.featured:hover {
-  border-color: var(--surface-border-hover);
-  transform: translateY(-4px);
-  box-shadow: 0 24px 64px rgba(0,0,0,0.34), 0 10px 34px rgba(111,98,196,0.16);
-}
+.pillar:hover .pillar-num { color: var(--black); }
 
 .product-visual {
   width: 320px;
@@ -761,27 +740,9 @@ nav.scrolled {
   100% { box-shadow: 0 0 0 0 rgba(111,227,160,0); }
 }
 
-.product-info {
-  flex: 1;
-  padding: 2.5rem 2.75rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.product-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--violet-soft);
-  margin-bottom: 0.875rem;
-}
-.product-tag::before {
+.pillar-num::before {
   content: '';
+  display: block;
   width: 7px; height: 7px;
   border-radius: 50%;
   background: var(--violet-soft);
@@ -978,12 +939,8 @@ nav.scrolled {
 /* ============================
    PROCESS — TASK 2
 ============================ */
-/* Lifted dark canvas — diagonal sweep, accent glow and a wider constellation pattern */
 #process {
-  background:
-    radial-gradient(circle, rgba(180,172,230,0.09) 1px, transparent 1.4px) 0 0/38px 38px,
-    radial-gradient(ellipse 760px 520px at 16% 12%, rgba(83,128,199,0.16), transparent 58%),
-    linear-gradient(115deg, #1A1532 0%, #241F48 45%, #1E1936 75%, #1A1532 100%);
+  background: linear-gradient(180deg, var(--white) 0%, #F8F8F9 100%);
 }
 
 .process-grid {
@@ -1020,7 +977,7 @@ nav.scrolled {
   position: relative;
   z-index: 1;
   flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(111,98,196,0.34);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
 .step-title {
@@ -1039,13 +996,8 @@ nav.scrolled {
 /* ============================
    TEAM — TASK 3 (full redesign)
 ============================ */
-/* Lifted dark canvas — mirrored corner glows + constellation pattern, for rhythm with services */
 #team {
-  background:
-    radial-gradient(circle, rgba(180,172,230,0.10) 1px, transparent 1.4px) 0 0/34px 34px,
-    radial-gradient(ellipse 880px 560px at 10% -8%, rgba(83,128,199,0.16), transparent 60%),
-    radial-gradient(ellipse 820px 540px at 96% 102%, rgba(134,120,212,0.18), transparent 60%),
-    linear-gradient(165deg, #1C1836 0%, #221C42 50%, #251E48 100%);
+  background: linear-gradient(180deg, #F8F8F9 0%, var(--gray-50) 100%);
 }
 
 .team-grid {
@@ -1062,7 +1014,7 @@ nav.scrolled {
   border: 1px solid var(--surface-border);
   border-radius: var(--radius);
   padding: 1.625rem 1.5rem 1.25rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
   transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
   display: flex;
   flex-direction: column;
@@ -1073,9 +1025,9 @@ nav.scrolled {
 }
 .team-card:hover,
 .team-card.active {
-  border-color: var(--surface-border-hover);
+  border-color: var(--gray-300);
   transform: translateY(-3px);
-  box-shadow: 0 16px 42px rgba(0,0,0,0.30), 0 6px 20px rgba(111,98,196,0.13);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.09);
 }
 
 /* Geometric avatar */
@@ -1089,14 +1041,14 @@ nav.scrolled {
   content: '';
   position: absolute;
   inset: -4px;
-  border: 1.5px solid rgba(255,255,255,0.12);
+  border: 1.5px solid var(--gray-200);
   border-radius: 14px;
   transform: rotate(8deg);
   transition: border-color 0.3s var(--ease), transform 0.4s var(--ease);
 }
 .team-card:hover .avatar-wrap::before,
 .team-card.active .avatar-wrap::before {
-  border-color: var(--violet-soft);
+  border-color: var(--gray-400);
   transform: rotate(0deg);
 }
 
@@ -1117,7 +1069,7 @@ nav.scrolled {
 .member-name {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--black);
   margin-bottom: 0.2rem;
   letter-spacing: -0.015em;
   align-self: start;
@@ -1125,7 +1077,7 @@ nav.scrolled {
 .member-role {
   font-size: 0.775rem;
   font-weight: 600;
-  color: var(--ink-soft);
+  color: var(--gray-500);
   margin-bottom: 0.875rem;
   line-height: 1.4;
   align-self: start;
@@ -1154,9 +1106,9 @@ nav.scrolled {
 }
 .team-card:hover .tag,
 .team-card.active .tag {
-  background: rgba(255,255,255,0.09);
-  border-color: rgba(255,255,255,0.12);
-  color: var(--ink);
+  background: var(--gray-50);
+  border-color: var(--gray-200);
+  color: var(--gray-600);
 }
 
 /* card-spacer no longer needed but kept harmless */
@@ -1169,10 +1121,10 @@ nav.scrolled {
   gap: 0.4rem;
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--ink-soft);
+  color: var(--gray-400);
   letter-spacing: 0.03em;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid var(--gray-100);
   transition: color 0.25s;
   user-select: none;
   align-self: end;
@@ -1185,7 +1137,7 @@ nav.scrolled {
 }
 .team-card:hover .bio-toggle,
 .team-card.active .bio-toggle {
-  color: var(--ink);
+  color: var(--gray-600);
 }
 .team-card.active .bio-toggle svg {
   transform: rotate(180deg);
@@ -1194,7 +1146,7 @@ nav.scrolled {
 /* Bio panel — max-height animation, clipped by card overflow:hidden */
 .member-bio {
   font-size: 0.8rem;
-  color: var(--ink-soft);
+  color: var(--gray-500);
   line-height: 1.7;
   max-height: 0;
   overflow: hidden;
@@ -1212,53 +1164,7 @@ nav.scrolled {
   opacity: 1;
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top-color: rgba(255,255,255,0.08);
-}
-
-/* ---- Join the team card ---- */
-.join-card {
-  align-items: flex-start;
-  justify-content: center;
-  border: 1.5px dashed rgba(255,255,255,0.16);
-  background: transparent;
-  box-shadow: none;
-  cursor: pointer;
-}
-.join-card:hover {
-  border-color: var(--violet-soft);
-  border-style: solid;
-  background: var(--surface);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 42px rgba(111,98,196,0.16);
-}
-.join-icon {
-  width: 42px; height: 42px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.16);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  color: var(--ink-soft);
-  transition: border-color 0.35s var(--ease), color 0.35s var(--ease), transform 0.45s var(--ease);
-}
-.join-icon svg { width: 17px; height: 17px; }
-.join-card:hover .join-icon {
-  border-color: var(--violet-soft);
-  color: var(--violet-soft);
-  transform: rotate(90deg);
-}
-.join-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 0.625rem;
-  letter-spacing: -0.015em;
-}
-.join-desc {
-  font-size: 0.825rem;
-  color: var(--ink-soft);
-  line-height: 1.65;
+  border-top-color: var(--gray-100);
 }
 
 /* ============================
