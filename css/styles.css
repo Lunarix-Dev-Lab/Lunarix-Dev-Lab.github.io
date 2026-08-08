@@ -34,6 +34,7 @@
 
 html { scroll-behavior: smooth; font-size: 16px; scrollbar-gutter: stable; }
 
+
 body {
   font-family: var(--font);
   color: var(--black);
@@ -74,6 +75,58 @@ section { padding: 7rem 0; }
 .delay-5 { transition-delay: 0.40s; }
 .delay-6 { transition-delay: 0.48s; }
 .delay-7 { transition-delay: 0.56s; }
+
+/* ============================
+   ESTILOS DE FONDOS INTERCALADOS
+============================ */
+
+/* Estilo reutilizable de grilla con cuadrados para #hero, #about y #team */
+/* ============================
+   SECCIONES CON GRILLA / CUADRADOS (Sin puntitos)
+============================ */
+#hero, #about, #team {
+  position: relative;
+  overflow: hidden;
+  /* Eliminamos cualquier radial-gradient de puntitos y dejamos solo el color de fondo */
+  background: linear-gradient(165deg, #0D0B18 0%, var(--black) 50%, #120C24 100%) !important;
+}
+
+#hero::before, #about::before, #team::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Solo dibujamos las líneas verticales y horizontales de la grilla */
+  background-image:
+    linear-gradient(rgba(167,158,221,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(167,158,221,0.035) 1px, transparent 1px) !important;
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grid-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Asegurar que el contenido esté por encima del fondo */
+#hero > .container, #about > .container, #team > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilo reutilizable de puntitos para #services y #process */
+#services, #process {
+  position: relative;
+  background:
+    radial-gradient(circle, rgba(180,172,230,0.10) 1px, transparent 1.4px) 0 0/34px 34px,
+    radial-gradient(ellipse 920px 600px at 86% -10%, rgba(111,98,196,0.20), transparent 60%),
+    radial-gradient(ellipse 760px 520px at 4% 106%, rgba(83,128,199,0.15), transparent 58%),
+    linear-gradient(165deg, #1D1838 0%, #221C42 50%, #1A1532 100%);
+}
 
 /* ============================
    NAVIGATION
@@ -1816,4 +1869,89 @@ nav.scrolled {
   background: linear-gradient(90deg,
     rgba(134, 120, 212, 0.18) 0%,
     rgba(134, 120, 212, 0.04) 100%);
+}
+
+/* ============================
+   HERO STAT DISPLAY (Texto Grande)
+============================ */
+.hero-stat-display {
+  position: absolute;
+  bottom: 20rem;
+  right:-20rem;
+  display: flex;
+  align-items: center; /* Alinea verticalmente el número y el texto */
+  gap: 1.25rem;
+  background: none;
+  border: none;
+  box-shadow: none;
+  z-index: 10;
+  pointer-events: none;
+  animation: hero-up 0.8s var(--ease) 0.6s both;
+}
+
+.stat-number {
+  font-size: clamp(3.5rem, 5vw, 5.5rem); /* Número gigante */
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--white);
+  text-shadow: 0 0 30px rgba(134, 120, 212, 0.35);
+}
+
+.stat-label {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem); /* ¡Texto grande similar al título! */
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white); /* Pasado a blanco brillante para igualar al título */
+  letter-spacing: -0.02em;
+  text-transform: none; /* Mantiene las mayúsculas/minúsculas originales */
+}
+
+@media (max-width: 768px) {
+  .hero-stat-display {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: 2.5rem;
+  }
+}
+
+/* ============================
+   TAMAÑO AGRANDADO DE AVATAR (76px)
+============================ */
+.avatar-wrap {
+  width: 76px;  /* Antes: 58px */
+  height: 76px; /* Antes: 58px */
+  position: relative;
+  margin-bottom: 1.25rem;
+  align-self: start;
+}
+
+/* Si usás etiquetas <img> */
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  max-width: 76px;
+  max-height: 76px;
+  border-radius: 14px; /* Un poquito más redondeado para acompañar el nuevo tamaño */
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Si todavía tenés celdas con texto/iniciales temporales (.avatar) */
+.avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem; /* Subimos un poco el texto de las iniciales */
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 1;
 }

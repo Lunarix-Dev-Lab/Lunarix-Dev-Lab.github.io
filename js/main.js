@@ -40,48 +40,53 @@ if (savedLang && savedLang !== 'es') setLang(savedLang);
    Uses opacity + transform only
    (GPU-composited, zero reflow/repaint).
 ============================ */
-(function initHeroGrid() {
-  const canvas = document.getElementById('hero-grid-canvas');
-  if (!canvas) return;
+/* ============================
+   GRID SPARKLES (Hero, About, Team)
+============================ */
+(function initGridSparkles() {
+  const canvases = document.querySelectorAll('#hero-grid-canvas, .grid-canvas');
+  if (!canvases.length) return;
 
-  const CELL  = 64;   // must match CSS background-size
-  const COUNT = 28;   // simultaneous sparkle cells
+  const CELL    = 64;   // coincide con background-size del CSS
+  const COUNT   = 24;   // celdas simultáneas por sección
   const MIN_DUR = 4.5;
   const MAX_DUR = 9.0;
 
-  function spawnCell() {
-    const el = document.createElement('div');
-    el.className = 'grid-spark';
+  function populateCanvas(canvas) {
+    canvas.innerHTML = '';
+    const cols = Math.ceil(window.innerWidth / CELL) + 1;
+    const rows = Math.ceil(canvas.clientHeight / CELL) + 1;
 
-    // Snap to nearest grid line
-    const cols  = Math.ceil(window.innerWidth  / CELL) + 1;
-    const rows  = Math.ceil(window.innerHeight / CELL) + 1;
-    const col   = Math.floor(Math.random() * cols);
-    const row   = Math.floor(Math.random() * rows);
+    for (let i = 0; i < COUNT; i++) {
+      const el = document.createElement('div');
+      el.className = 'grid-spark';
 
-    el.style.cssText = [
-      `left:${col * CELL}px`,
-      `top:${row * CELL}px`,
-      `--spark-duration:${(MIN_DUR + Math.random() * (MAX_DUR - MIN_DUR)).toFixed(2)}s`,
-      `--spark-delay:-${(Math.random() * MAX_DUR).toFixed(2)}s`,
-    ].join(';');
+      const col = Math.floor(Math.random() * cols);
+      const row = Math.floor(Math.random() * rows);
 
-    canvas.appendChild(el);
+      el.style.cssText = [
+        `left:${col * CELL}px`,
+        `top:${row * CELL}px`,
+        `--spark-duration:${(MIN_DUR + Math.random() * (MAX_DUR - MIN_DUR)).toFixed(2)}s`,
+        `--spark-delay:-${(Math.random() * MAX_DUR).toFixed(2)}s`,
+      ].join(';');
+
+      canvas.appendChild(el);
+    }
   }
 
-  for (let i = 0; i < COUNT; i++) spawnCell();
+  function initAll() {
+    canvases.forEach(populateCanvas);
+  }
 
-  // Lazily refresh positions on resize (debounced)
+  initAll();
+
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      canvas.innerHTML = '';
-      for (let i = 0; i < COUNT; i++) spawnCell();
-    }, 400);
+    resizeTimer = setTimeout(initAll, 400);
   }, { passive: true });
 })();
-
 
 /* ============================
    NAVBAR SCROLL
@@ -297,4 +302,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
     if (!raf) raf = requestAnimationFrame(tick);
   }, { passive: true });
+})();
+
+/* ============================
+   SMART EMAIL LINK (PC -> Web / Mobile -> App)
+============================ */
+(function initSmartEmailLink() {
+  const emailLink = document.getElementById('emailLink');
+  if (!emailLink) return;
+
+  emailLink.addEventListener('click', (e) => {
+    // Detectamos si es móvil mediante pantalla táctil / ancho de pantalla / UserAgent
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
+    if (isMobile) {
+      // En móviles, cancelamos el enlace a Gmail Web y usamos mailto: para abrir la App
+      e.preventDefault();
+      window.location.href = 'mailto:info@lunarix.com.ar';
+    }
+    // En PC, no hace nada el script y sigue el comportamiento por defecto (abre Gmail Web en nueva pestaña)
+  });
 })();
